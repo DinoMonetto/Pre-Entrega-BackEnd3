@@ -11,6 +11,8 @@ Pre-Entrega1/
 │   │   ├── user.model.js    # Modelo de Mongoose para los usuarios
 │   │   └── pet.model.js     # Modelo de Mongoose para las mascotas
 │   ├── app.js               # Archivo principal del servidor Express
+│   ├── services/
+│   │   ├── mockData.service.js    
 │   └── config/
 │       └── database.js      # Archivo para configurar la conexión a MongoDB
 ├── .env                     # Archivo para almacenar las variables de entorno (como el URI de MongoDB)

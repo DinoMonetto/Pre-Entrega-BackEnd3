@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { generateMockUsers, generateData } from '../services/mockData.service.js';
+import { generateMockUsers, generateData } from '../services/mockData.service.js'; // Asegúrate de que este archivo exista
 
 const router = Router();
 
-// Endpoint para mocking pets (Del desafío anterior)
+// Endpoint para mocking pets
 router.get('/mockingpets', (req, res) => {
   const pets = [
     { name: 'Fido', type: 'dog' },

@@ -12,17 +12,26 @@ const PORT = process.env.PORT || 8080;
 app.use(express.json());
 
 // Rutas
-app.use('/api/mocks', mocksRouter);
+app.use('/api/mocks', mocksRouter); 
 
 // Conexión a MongoDB
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('Conectado a MongoDB'))
-.catch(err => console.error('Error conectando a MongoDB:', err));
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('Conectado a MongoDB');
 
-// Servidor en escucha
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en puerto ${PORT}`);
-});
+    // Servidor en escucha solo después de conectar a la base de datos
+    app.listen(PORT, () => {
+      console.log(`Servidor corriendo en puerto ${PORT}`);
+    });
+  } catch (err) {
+    console.error('Error conectando a MongoDB:', err);
+    process.exit(1); 
+  }
+};
+
+
+connectDB();
